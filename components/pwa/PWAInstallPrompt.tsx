@@ -20,7 +20,7 @@ export const PWAInstallPrompt: React.FC = () => {
               <Smartphone className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-white">Instalar Ayme App</h4>
+              <h4 className="text-sm font-bold text-white">Instalar YatiTech App</h4>
               <p className="text-xs text-slate-300">
                 Accede más rápido y estudia sin conexión en tu dispositivo.
               </p>

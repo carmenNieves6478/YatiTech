@@ -322,7 +322,7 @@ En Python, una **variable** es un contenedor en memoria para almacenar informaci
 |---|---|---|---|
 | **Entero** | \`int\` | Números sin parte decimal | \`edad = 16\` |
 | **Flotante** | \`float\` | Números con decimales | \`promedio = 17.5\` |
-| **Texto** | \`str\` | Cadena de caracteres entre comillas | \`nombre = "Ayme"\` |
+| **Texto** | \`str\` | Cadena de caracteres entre comillas | \`nombre = "YatiTech"\` |
 | **Booleano** | \`bool\` | Valores lógicos de verdad | \`activo = True\` |
 
 ---

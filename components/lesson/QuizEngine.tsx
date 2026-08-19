@@ -247,7 +247,7 @@ export const QuizEngine: React.FC<Props> = ({
                       type="button"
                       onClick={() =>
                         onAskTutor(
-                          `Hola Ayme Tutor, por favor ayúdame a entender por qué fallé en la pregunta: "${fq.pregunta}". ${
+                          `Hola Yati Tutor, por favor ayúdame a entender por qué fallé en la pregunta: "${fq.pregunta}". ${
                             fq.explicacion ? "La explicación menciona: " + fq.explicacion : ""
                           }`
                         )

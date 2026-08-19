@@ -26,29 +26,29 @@ export default function Home() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-semibold backdrop-blur-md shadow-inner">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Plataforma Educativa PWA + IA Tutor de Gemini</span>
+            <span>Sabiduría Andina + Educación STEM & Tutor IA (Yati)</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-            El futuro del aprendizaje guiado por{" "}
+            El futuro del aprendizaje escolar guiado por{" "}
             <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Inteligencia Artificial
+              YatiTech
             </span>
           </h1>
 
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-            Plataforma web y móvil instalable (PWA) con autenticación en tiempo real mediante Supabase y tutoría socrática impulsada por Google Gemini.
+            Plataforma educativa web y móvil (PWA) inspirada en el saber Aymara con autenticación en tiempo real mediante Supabase y tutoría interactiva impulsada por IA.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link href="/tutor" className="w-full sm:w-auto">
               <Button variant="primary" size="lg" className="w-full gap-2 shadow-xl shadow-indigo-600/30">
-                <Bot className="w-5 h-5 text-purple-200" /> Probar Tutor IA <ArrowRight className="w-4 h-4" />
+                <Bot className="w-5 h-5 text-purple-200" /> Probar Yati Tutor IA <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
-            <Link href="/courses" className="w-full sm:w-auto">
+            <Link href="/cursos" className="w-full sm:w-auto">
               <Button variant="outline" size="lg" className="w-full gap-2 border-slate-700 hover:border-slate-500">
-                <BookOpen className="w-5 h-5" /> Ver Cursos
+                <BookOpen className="w-5 h-5" /> Ver Cursos Escolares
               </Button>
             </Link>
           </div>
@@ -59,17 +59,17 @@ export default function Home() {
           <div className="bg-slate-950 rounded-2xl overflow-hidden p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center gap-2 text-xs font-semibold text-indigo-400">
-                <BrainCircuit className="w-4 h-4" /> Demostración Tutor Virtual
+                <BrainCircuit className="w-4 h-4" /> Demostración Yati Tutor Virtual
               </div>
               <h3 className="text-2xl font-bold text-white">
-                Respuestas explicativas paso a paso, adaptadas a tu nivel
+                Respuestas pedagógicas explicativas paso a paso, adaptadas a tu nivel
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                El tutor Ayme razona contigo usando el método socrático para que comprendas el porqué de los conceptos, no solo memorices datos.
+                El tutor Yati razona contigo usando el método socrático para que comprendas el porqué de los conceptos de matemática, física, química y programación.
               </p>
               <div className="pt-2 flex flex-wrap gap-2 text-xs">
                 <span className="px-3 py-1 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">
-                  ⚡ Google Gemini 1.5 Flash
+                  ⚡ Yati AI (Gemini 3.6 Flash)
                 </span>
                 <span className="px-3 py-1 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">
                   📱 Soporte PWA Offline
@@ -83,13 +83,13 @@ export default function Home() {
             <div className="lg:col-span-5 relative h-64 w-full rounded-2xl overflow-hidden border border-indigo-500/30 shadow-xl group">
               <Image
                 src="/icon.png"
-                alt="Ayme App Preview"
+                alt="YatiTech App Preview"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-4">
                 <span className="text-xs font-bold text-white bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-800">
-                  Ayme Mobile PWA Card
+                  YatiTech Mobile PWA Card
                 </span>
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 space-y-2">
           <h2 className="text-3xl font-extrabold text-white">
-            Arquitectura de la Plataforma
+            Arquitectura de YatiTech
           </h2>
           <p className="text-slate-400 text-sm max-w-xl mx-auto">
             Construida con las tecnologías más eficientes del desarrollo moderno full-stack.
@@ -146,18 +146,18 @@ export default function Home() {
         <div className="rounded-3xl bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 border border-indigo-500/30 p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
           <div className="space-y-4 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-medium border border-purple-500/30">
-              <Bot className="w-3.5 h-3.5" /> Generative AI Integration
+              <Bot className="w-3.5 h-3.5" /> Yati AI Integration
             </div>
             <h2 className="text-3xl font-extrabold text-white">
-              Prueba la experiencia con Gemini API
+              Prueba la experiencia con Yati Tutor
             </h2>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Inicia una conversación con el tutor Ayme para responder tus preguntas académicas, revisar código o preparar exámenes.
+              Inicia una conversación con el tutor Yati para responder tus preguntas académicas, revisar código Python o preparar exámenes.
             </p>
             <div className="pt-2">
               <Link href="/tutor">
                 <Button variant="primary" size="md" className="gap-2">
-                  Abrir Chat de Tutor <ArrowRight className="w-4 h-4" />
+                  Abrir Chat con Yati <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             </div>
@@ -165,7 +165,7 @@ export default function Home() {
 
           <div className="w-full md:w-80 p-6 rounded-2xl bg-slate-950/80 border border-slate-800 shadow-xl space-y-3">
             <div className="flex items-center gap-2 text-xs font-bold text-slate-300 border-b border-slate-800 pb-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" /> Estado del Servidor
+              <ShieldCheck className="w-4 h-4 text-emerald-400" /> Estado del Servidor YatiTech
             </div>
             <div className="space-y-2 text-xs">
               <div className="flex justify-between text-slate-400">
@@ -173,7 +173,7 @@ export default function Home() {
                 <span className="text-emerald-400 font-semibold">Listo</span>
               </div>
               <div className="flex justify-between text-slate-400">
-                <span>SDK Gemini Generative AI:</span>
+                <span>Tutor Yati AI:</span>
                 <span className="text-emerald-400 font-semibold">Configurado</span>
               </div>
               <div className="flex justify-between text-slate-400">

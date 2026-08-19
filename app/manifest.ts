@@ -2,9 +2,9 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Ayme - Plataforma Educativa Inteligente",
-    short_name: "Ayme",
-    description: "Plataforma educativa interactiva impulsada por IA con tutoría personalizada de Gemini.",
+    name: "YatiTech - Sabiduría & Plataforma Educativa STEM",
+    short_name: "YatiTech",
+    description: "Plataforma educativa interactiva inspirada en el saber Aymara (Yati) con tutoría personalizada de IA Yati.",
     start_url: "/",
     display: "standalone",
     background_color: "#0f172a",

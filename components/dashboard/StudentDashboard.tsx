@@ -374,7 +374,7 @@ export const StudentDashboard: React.FC = () => {
                 ¡Hola, {profileName || user?.email?.split("@")[0] || "Estudiante"}! 👋
               </h1>
               <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                Panel educativo y seguimiento de aprendizaje de Ayme PWA.
+                Panel educativo y seguimiento de aprendizaje de YatiTech PWA.
               </p>
             </div>
           </div>

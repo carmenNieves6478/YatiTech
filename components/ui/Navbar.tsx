@@ -21,7 +21,7 @@ export const Navbar: React.FC = () => {
           <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
             <Image
               src="/icon.png"
-              alt="Ayme Logo"
+              alt="YatiTech Logo"
               fill
               className="object-cover"
             />
