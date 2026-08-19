@@ -12,7 +12,7 @@ export const Navbar: React.FC = () => {
   const { isInstallable, installPWA } = usePWA();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const logoUrl = "https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png";
+  const logoUrl = "https://cdn.phototourl.com/free/2026-08-19-1adf156d-26c7-446d-acbb-a6e0dd3e3b01.png";
 
   return (
     <header className="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-sm">

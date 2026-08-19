@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: "https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png",
-    apple: "https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png",
+    icon: "https://cdn.phototourl.com/free/2026-08-19-1adf156d-26c7-446d-acbb-a6e0dd3e3b01.png",
+    apple: "https://cdn.phototourl.com/free/2026-08-19-1adf156d-26c7-446d-acbb-a6e0dd3e3b01.png",
   },
 };
 
@@ -42,7 +42,7 @@ export default function RootLayout({
     <html lang="es" className="light">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png" />
+        <link rel="apple-touch-icon" href="https://cdn.phototourl.com/free/2026-08-19-1adf156d-26c7-446d-acbb-a6e0dd3e3b01.png" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased selection:bg-teal-500 selection:text-white">

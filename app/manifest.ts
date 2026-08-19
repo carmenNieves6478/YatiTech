@@ -11,13 +11,13 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#0d9488",
     icons: [
       {
-        src: "https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png",
+        src: "https://cdn.phototourl.com/free/2026-08-19-1adf156d-26c7-446d-acbb-a6e0dd3e3b01.png",
         sizes: "192x192",
         type: "image/png",
         purpose: "maskable",
       },
       {
-        src: "https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png",
+        src: "https://cdn.phototourl.com/free/2026-08-19-1adf156d-26c7-446d-acbb-a6e0dd3e3b01.png",
         sizes: "512x512",
         type: "image/png",
         purpose: "any",
