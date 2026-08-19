@@ -42,19 +42,17 @@ export const CourseCatalog: React.FC = () => {
     async function fetchCourses() {
       setLoading(true);
       try {
-        // 1. Fetch all available courses from Supabase
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const { data: rawCourses, error: coursesError } = await (supabase.from("courses" as any) as any)
           .select("*")
           .order("created_at", { ascending: false });
 
         if (coursesError) {
-          console.error("Error direct de Supabase al consultar la tabla courses:", coursesError);
+          console.error("Error directo de Supabase al consultar la tabla courses:", coursesError);
           throw coursesError;
         }
 
         if (rawCourses && rawCourses.length > 0) {
-          // 2. Fetch lessons to compute exact lesson counts per course
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const { data: rawLessons } = await (supabase.from("lessons" as any) as any)
             .select("id, course_id");
@@ -132,20 +130,20 @@ export const CourseCatalog: React.FC = () => {
   const getLevelBadgeColor = (level: string) => {
     switch (level.toLowerCase()) {
       case "principiante":
-        return "text-emerald-400 border-emerald-500/30 bg-emerald-500/10";
+        return "text-emerald-700 border-emerald-300 bg-emerald-50";
       case "intermedio":
-        return "text-indigo-400 border-indigo-500/30 bg-indigo-500/10";
+        return "text-teal-700 border-teal-300 bg-teal-50";
       case "avanzado":
-        return "text-purple-400 border-purple-500/30 bg-purple-500/10";
+        return "text-cyan-700 border-cyan-300 bg-cyan-50";
       default:
-        return "text-slate-400 border-slate-700 bg-slate-800";
+        return "text-slate-600 border-slate-300 bg-slate-100";
     }
   };
 
   return (
     <div className="space-y-8">
       {/* Search Bar & Filters Section */}
-      <Card className="bg-slate-900/80 border-slate-800 p-6 space-y-4">
+      <Card className="bg-white border-slate-200 p-6 space-y-4 shadow-sm">
         <div className="flex flex-col md:flex-row items-center gap-4">
           {/* Text Search Input */}
           <div className="relative flex-1 w-full">
@@ -155,12 +153,12 @@ export const CourseCatalog: React.FC = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Buscar curso por título o descripción..."
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
             />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm("")}
-                className="absolute right-3 top-3 text-slate-400 hover:text-white"
+                className="absolute right-3 top-3 text-slate-400 hover:text-slate-700"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -172,7 +170,7 @@ export const CourseCatalog: React.FC = () => {
             <select
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-teal-600"
             >
               <option value="todos">Todos los niveles</option>
               <option value="principiante">Principiante</option>
@@ -183,16 +181,16 @@ export const CourseCatalog: React.FC = () => {
         </div>
 
         {/* Category Pills */}
-        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/60">
-          <span className="text-xs font-semibold text-slate-400 mr-2 flex items-center gap-1">
+        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200">
+          <span className="text-xs font-semibold text-slate-600 mr-2 flex items-center gap-1">
             <Filter className="w-3.5 h-3.5" /> Categorías:
           </span>
           <button
             onClick={() => setSelectedCategory("todos")}
             className={`px-3 py-1 rounded-xl text-xs font-semibold transition-colors ${
               selectedCategory === "todos"
-                ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
-                : "bg-slate-950 text-slate-400 hover:text-white border border-slate-800"
+                ? "bg-teal-600 text-white shadow-sm"
+                : "bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200"
             }`}
           >
             Todas
@@ -203,8 +201,8 @@ export const CourseCatalog: React.FC = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1 rounded-xl text-xs font-semibold transition-colors ${
                 selectedCategory.toLowerCase() === cat.toLowerCase()
-                  ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
-                  : "bg-slate-950 text-slate-400 hover:text-white border border-slate-800"
+                  ? "bg-teal-600 text-white shadow-sm"
+                  : "bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200"
               }`}
             >
               {cat}
@@ -214,7 +212,7 @@ export const CourseCatalog: React.FC = () => {
           {(searchTerm || selectedCategory !== "todos" || selectedLevel !== "todos") && (
             <button
               onClick={clearFilters}
-              className="ml-auto text-xs text-indigo-400 hover:text-indigo-300 font-medium underline"
+              className="ml-auto text-xs text-teal-700 hover:text-teal-800 font-medium underline"
             >
               Limpiar filtros
             </button>
@@ -226,7 +224,7 @@ export const CourseCatalog: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[1, 2, 3].map((n) => (
-            <Card key={n} className="h-64 animate-pulse bg-slate-900/40 border-slate-800" />
+            <Card key={n} className="h-64 animate-pulse bg-slate-100 border-slate-200" />
           ))}
         </div>
       ) : filteredCourses.length > 0 ? (
@@ -234,12 +232,12 @@ export const CourseCatalog: React.FC = () => {
           {filteredCourses.map((course) => (
             <Card
               key={course.id}
-              className="flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group p-4 sm:p-5 overflow-hidden"
+              className="flex flex-col justify-between hover:border-teal-400 transition-all duration-300 group p-4 sm:p-5 overflow-hidden bg-white shadow-sm hover:shadow-md"
             >
               <div className="space-y-3">
                 {/* Course Cover Image if available */}
                 {course.portada_url ? (
-                  <div className="relative w-full h-44 sm:h-48 rounded-xl overflow-hidden bg-slate-950 border border-slate-800/80 shadow-md">
+                  <div className="relative w-full h-44 sm:h-48 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shadow-xs">
                     <Image
                       src={course.portada_url}
                       alt={course.titulo}
@@ -247,19 +245,19 @@ export const CourseCatalog: React.FC = () => {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-2.5 right-2.5">
-                      <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full border backdrop-blur-md ${getLevelBadgeColor(course.nivel)}`}>
+                      <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full border backdrop-blur-md shadow-xs ${getLevelBadgeColor(course.nivel)}`}>
                         {course.nivel.toUpperCase()}
                       </span>
                     </div>
                     <div className="absolute top-2.5 left-2.5">
-                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-950/80 text-indigo-300 border border-slate-800 backdrop-blur-md">
+                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-white/90 text-teal-800 border border-teal-200 backdrop-blur-md shadow-xs">
                         {course.categoria}
                       </span>
                     </div>
                   </div>
                 ) : (
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300">
+                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full border border-teal-200 bg-teal-50 text-teal-800">
                       {course.categoria}
                     </span>
                     <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full border ${getLevelBadgeColor(course.nivel)}`}>
@@ -269,28 +267,28 @@ export const CourseCatalog: React.FC = () => {
                 )}
 
                 <div>
-                  <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors leading-snug line-clamp-2">
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug line-clamp-2">
                     {course.titulo}
                   </h3>
-                  <p className="text-slate-400 text-xs mt-2 line-clamp-3 leading-relaxed">
+                  <p className="text-slate-600 text-xs mt-2 line-clamp-3 leading-relaxed">
                     {course.descripcion || "Sin descripción disponible para este curso."}
                   </p>
                 </div>
               </div>
 
-              <div className="pt-5 mt-6 border-t border-slate-800/80 space-y-4">
-                <div className="flex items-center justify-between text-xs text-slate-400 bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800/50">
+              <div className="pt-5 mt-6 border-t border-slate-200 space-y-4">
+                <div className="flex items-center justify-between text-xs text-slate-600 bg-slate-50 px-3 py-2 rounded-xl border border-slate-200">
                   <span className="flex items-center gap-1.5 font-medium">
-                    <BookOpen className="w-4 h-4 text-indigo-400" />
-                    <strong className="text-white font-bold">{course.lesson_count}</strong> {course.lesson_count === 1 ? "Lección" : "Lecciones"}
+                    <BookOpen className="w-4 h-4 text-teal-600" />
+                    <strong className="text-slate-900 font-bold">{course.lesson_count}</strong> {course.lesson_count === 1 ? "Lección" : "Lecciones"}
                   </span>
-                  <span className="flex items-center gap-1.5 capitalize font-medium text-slate-300">
-                    <Signal className="w-3.5 h-3.5 text-purple-400" /> {course.nivel}
+                  <span className="flex items-center gap-1.5 capitalize font-medium text-slate-700">
+                    <Signal className="w-3.5 h-3.5 text-emerald-600" /> {course.nivel}
                   </span>
                 </div>
 
                 <Link href={`/cursos/${course.id}`} className="block pt-1">
-                  <Button variant="primary" size="sm" className="w-full justify-center gap-2 py-2.5 shadow-md shadow-indigo-600/20 font-semibold">
+                  <Button variant="primary" size="sm" className="w-full justify-center gap-2 py-2.5 shadow-sm font-semibold">
                     <Sparkles className="w-3.5 h-3.5 text-amber-300" /> Ver Programa de Curso
                   </Button>
                 </Link>
@@ -300,12 +298,12 @@ export const CourseCatalog: React.FC = () => {
         </div>
       ) : (
         /* Elegant Empty State */
-        <Card className="text-center py-16 px-6 bg-slate-900/60 border-dashed border-slate-800 max-w-lg mx-auto">
-          <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mx-auto mb-4">
+        <Card className="text-center py-16 px-6 bg-white border-dashed border-slate-300 max-w-lg mx-auto shadow-xs">
+          <div className="w-16 h-16 rounded-2xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-600 mx-auto mb-4">
             <BookOpen className="w-8 h-8" />
           </div>
-          <h3 className="text-xl font-bold text-white mb-2">No se encontraron cursos</h3>
-          <p className="text-slate-400 text-xs leading-relaxed max-w-sm mx-auto mb-6">
+          <h3 className="text-xl font-bold text-slate-900 mb-2">No se encontraron cursos</h3>
+          <p className="text-slate-600 text-xs leading-relaxed max-w-sm mx-auto mb-6">
             No hay cursos registrados o no coinciden con la búsqueda &quot;{searchTerm}&quot; o con los filtros seleccionados.
           </p>
           <Button variant="outline" size="sm" onClick={clearFilters} className="mx-auto">

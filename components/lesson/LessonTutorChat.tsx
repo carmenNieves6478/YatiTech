@@ -56,7 +56,7 @@ export const LessonTutorChat: React.FC<Props> = ({
           {
             id: "welcome",
             role: "assistant",
-            content: `¡Hola! Soy **Yati**, tu tutor educativo en **YatiTech**. Estoy listo para ayudarte con la lección **"${lessonTitle}"** del curso **"${courseTitle}"**. ¿Qué duda deseas resolver?`,
+            content: `¡Hola! Soy **Amauta**, tu tutor educativo. Estoy listo para ayudarte con la lección **"${lessonTitle}"** del curso **"${courseTitle}"**. ¿Qué duda deseas resolver?`,
           },
         ]);
         return;
@@ -85,7 +85,7 @@ export const LessonTutorChat: React.FC<Props> = ({
             {
               id: "welcome",
               role: "assistant",
-              content: `¡Hola! Soy **Yati**, tu tutor educativo en **YatiTech**. Estoy listo para ayudarte con la lección **"${lessonTitle}"** del curso **"${courseTitle}"**. ¿Qué duda deseas resolver?`,
+              content: `¡Hola! Soy **Amauta**, tu tutor educativo. Estoy listo para ayudarte con la lección **"${lessonTitle}"** del curso **"${courseTitle}"**. ¿Qué duda deseas resolver?`,
             },
           ]);
         }
@@ -169,7 +169,7 @@ export const LessonTutorChat: React.FC<Props> = ({
         }).then();
       }
     } catch (err: unknown) {
-      console.error("Error en YatiTech AI:", err);
+      console.error("Error en Amauta AI:", err);
       setMessages((prev) => [
         ...prev,
         {
@@ -186,18 +186,18 @@ export const LessonTutorChat: React.FC<Props> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-[420px] bg-slate-950/95 backdrop-blur-2xl border-l border-slate-800 shadow-2xl flex flex-col transition-transform duration-300">
+    <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-[420px] bg-white/95 backdrop-blur-2xl border-l border-slate-200 shadow-2xl flex flex-col transition-transform duration-300">
       {/* Header */}
-      <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/90">
+      <div className="p-4 border-b border-teal-800 bg-teal-900 text-white flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-md">
+          <div className="w-9 h-9 rounded-xl bg-teal-700 flex items-center justify-center text-white shadow-md">
             <Bot className="w-5 h-5" />
           </div>
           <div>
             <h3 className="text-sm font-extrabold text-white flex items-center gap-1.5">
-              YatiTech Tutor <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              Amauta Tutor <Sparkles className="w-3.5 h-3.5 text-amber-300" />
             </h3>
-            <p className="text-[11px] text-indigo-300 truncate max-w-[220px]">
+            <p className="text-[11px] text-teal-200 truncate max-w-[220px]">
               {lessonTitle}
             </p>
           </div>
@@ -205,17 +205,17 @@ export const LessonTutorChat: React.FC<Props> = ({
 
         <button
           onClick={onClose}
-          className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+          className="p-1.5 text-teal-200 hover:text-white rounded-lg hover:bg-teal-800 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
       </div>
 
       {/* Messages List */}
-      <div className="flex-1 p-4 overflow-y-auto space-y-4">
+      <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50">
         {fetchingHistory ? (
-          <div className="flex items-center justify-center py-10 text-xs text-slate-400 gap-2">
-            <Loader2 className="w-4 h-4 animate-spin text-indigo-400" /> Cargando historial de Yati...
+          <div className="flex items-center justify-center py-10 text-xs text-slate-500 gap-2">
+            <Loader2 className="w-4 h-4 animate-spin text-teal-600" /> Cargando historial de Amauta...
           </div>
         ) : (
           messages.map((m) => (
@@ -226,7 +226,7 @@ export const LessonTutorChat: React.FC<Props> = ({
               }`}
             >
               {m.role === "assistant" && (
-                <div className="w-7 h-7 rounded-xl bg-purple-600/30 border border-purple-500/30 flex items-center justify-center text-purple-300 text-xs flex-shrink-0 mt-1">
+                <div className="w-7 h-7 rounded-xl bg-teal-100 border border-teal-200 flex items-center justify-center text-teal-800 text-xs flex-shrink-0 mt-1">
                   <Bot className="w-4 h-4" />
                 </div>
               )}
@@ -234,8 +234,8 @@ export const LessonTutorChat: React.FC<Props> = ({
               <div
                 className={`max-w-[88%] p-3.5 rounded-2xl text-xs leading-relaxed ${
                   m.role === "user"
-                    ? "bg-indigo-600 text-white rounded-tr-none shadow-md"
-                    : "bg-slate-900/90 border border-slate-800/80 text-slate-200 rounded-tl-none shadow-inner"
+                    ? "bg-teal-600 text-white rounded-tr-none shadow-sm"
+                    : "bg-white border border-slate-200 text-slate-800 rounded-tl-none shadow-xs"
                 }`}
               >
                 {m.role === "assistant" ? (
@@ -246,7 +246,7 @@ export const LessonTutorChat: React.FC<Props> = ({
               </div>
 
               {m.role === "user" && (
-                <div className="w-7 h-7 rounded-xl bg-indigo-600/30 border border-indigo-500/30 flex items-center justify-center text-indigo-300 text-xs flex-shrink-0 mt-1">
+                <div className="w-7 h-7 rounded-xl bg-teal-600 text-white text-xs flex items-center justify-center flex-shrink-0 mt-1">
                   <User className="w-4 h-4" />
                 </div>
               )}
@@ -255,9 +255,9 @@ export const LessonTutorChat: React.FC<Props> = ({
         )}
 
         {loading && (
-          <div className="flex items-center gap-2 text-xs text-indigo-400 bg-slate-900/80 p-3 rounded-xl border border-slate-800 w-fit">
-            <Loader2 className="w-4 h-4 animate-spin text-indigo-400" />
-            <span>Yati está respondiendo...</span>
+          <div className="flex items-center gap-2 text-xs text-teal-700 bg-white p-3 rounded-xl border border-slate-200 w-fit shadow-xs">
+            <Loader2 className="w-4 h-4 animate-spin text-teal-600" />
+            <span>Amauta está respondiendo...</span>
           </div>
         )}
 
@@ -265,19 +265,19 @@ export const LessonTutorChat: React.FC<Props> = ({
       </div>
 
       {/* Input Footer */}
-      <form onSubmit={handleSendMessage} className="p-3.5 border-t border-slate-800 bg-slate-900/90">
+      <form onSubmit={handleSendMessage} className="p-3.5 border-t border-slate-200 bg-white">
         <div className="relative flex items-center">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Pregunta a Yati sobre la lección..."
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-3.5 pr-10 py-2.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+            placeholder="Pregunta a Amauta sobre la lección..."
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-3.5 pr-10 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-600"
           />
           <button
             type="submit"
             disabled={!input.trim() || loading}
-            className="absolute right-2 text-indigo-400 hover:text-indigo-300 disabled:text-slate-600 p-1.5"
+            className="absolute right-2 text-teal-600 hover:text-teal-800 disabled:text-slate-400 p-1.5"
           >
             <Send className="w-4 h-4" />
           </button>

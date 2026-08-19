@@ -13,22 +13,22 @@ export const PWAInstallPrompt: React.FC = () => {
 
   return (
     <div className="fixed bottom-4 right-4 left-4 sm:left-auto sm:w-96 z-50 animate-in fade-in slide-in-from-bottom-5 duration-300">
-      <div className="bg-slate-900/95 backdrop-blur-xl border border-indigo-500/40 rounded-2xl p-4 shadow-2xl shadow-indigo-950/50 flex flex-col gap-3">
+      <div className="bg-white/95 backdrop-blur-xl border border-teal-300 rounded-2xl p-4 shadow-xl flex flex-col gap-3">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-xl text-white shadow-md">
+            <div className="p-2.5 bg-teal-600 rounded-xl text-white shadow-md">
               <Smartphone className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-white">Instalar YatiTech App</h4>
-              <p className="text-xs text-slate-300">
+              <h4 className="text-sm font-bold text-slate-900">Instalar Amauta App</h4>
+              <p className="text-xs text-slate-600">
                 Accede más rápido y estudia sin conexión en tu dispositivo.
               </p>
             </div>
           </div>
           <button
             onClick={() => setDismissed(true)}
-            className="text-slate-400 hover:text-white p-1"
+            className="text-slate-400 hover:text-slate-700 p-1"
             aria-label="Cerrar"
           >
             <X className="w-4 h-4" />

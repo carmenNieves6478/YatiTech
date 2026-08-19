@@ -48,10 +48,10 @@ export const QuizEngine: React.FC<Props> = ({
 
   if (!questions || questions.length === 0) {
     return (
-      <Card className="p-8 text-center bg-slate-900/60 border-dashed border-slate-800">
-        <HelpCircle className="w-10 h-10 text-indigo-400 mx-auto mb-3" />
-        <h3 className="text-lg font-bold text-white mb-1">Cuestionario en preparación</h3>
-        <p className="text-xs text-slate-400">
+      <Card className="p-8 text-center bg-white border-dashed border-slate-300 shadow-xs">
+        <HelpCircle className="w-10 h-10 text-teal-600 mx-auto mb-3" />
+        <h3 className="text-lg font-bold text-slate-900 mb-1">Cuestionario en preparación</h3>
+        <p className="text-xs text-slate-500">
           Las preguntas para este quiz están siendo elaboradas por los profesores.
         </p>
       </Card>
@@ -101,7 +101,6 @@ export const QuizEngine: React.FC<Props> = ({
 
   const allAnswered = Object.keys(selectedAnswers).length === questions.length;
 
-  // Collect failed questions / topics for low score remediation
   const failedQuestions = questions.filter(
     (_, idx) => submitted && selectedAnswers[idx] !== questions[idx].respuesta_correcta
   );
@@ -109,19 +108,19 @@ export const QuizEngine: React.FC<Props> = ({
   return (
     <div className="space-y-6">
       {/* Quiz Top Header Card */}
-      <Card className="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border-indigo-500/30 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <Card className="bg-gradient-to-r from-teal-900 via-teal-800 to-emerald-900 border-teal-700 text-white p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-md">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30">
+            <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-200 border border-amber-300/30">
               Quiz Evaluativo
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-teal-200">
               {questions.length} {questions.length === 1 ? "Pregunta" : "Preguntas"}
             </span>
           </div>
 
           <h2 className="text-xl font-bold text-white">Evaluación de Aprendizaje</h2>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-teal-100 mt-1">
             Mide tu comprensión sobre la lección. Obtén 70% o más para aprobar.
           </p>
         </div>
@@ -129,14 +128,14 @@ export const QuizEngine: React.FC<Props> = ({
         {/* View Mode Toggle & Score Badge */}
         <div className="flex flex-col items-end gap-3 w-full md:w-auto">
           {!submitted && (
-            <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800 text-xs">
+            <div className="flex items-center gap-1 bg-teal-950 p-1 rounded-xl border border-teal-800 text-xs">
               <button
                 type="button"
                 onClick={() => setViewMode("step")}
                 className={`px-3 py-1 rounded-lg font-semibold transition-colors ${
                   viewMode === "step"
-                    ? "bg-indigo-600 text-white"
-                    : "text-slate-400 hover:text-white"
+                    ? "bg-teal-600 text-white"
+                    : "text-teal-200 hover:text-white"
                 }`}
               >
                 Una por una
@@ -146,8 +145,8 @@ export const QuizEngine: React.FC<Props> = ({
                 onClick={() => setViewMode("all")}
                 className={`px-3 py-1 rounded-lg font-semibold transition-colors ${
                   viewMode === "all"
-                    ? "bg-indigo-600 text-white"
-                    : "text-slate-400 hover:text-white"
+                    ? "bg-teal-600 text-white"
+                    : "text-teal-200 hover:text-white"
                 }`}
               >
                 Todas juntas
@@ -156,10 +155,10 @@ export const QuizEngine: React.FC<Props> = ({
           )}
 
           {submitted && (
-            <div className="flex items-center gap-3 bg-slate-950/80 px-4 py-3 rounded-xl border border-slate-800">
-              <Trophy className={`w-8 h-8 ${isHighScore ? "text-amber-400" : "text-slate-500"}`} />
+            <div className="flex items-center gap-3 bg-teal-950/80 px-4 py-3 rounded-xl border border-teal-700">
+              <Trophy className={`w-8 h-8 ${isHighScore ? "text-amber-400" : "text-slate-400"}`} />
               <div>
-                <div className="text-xs text-slate-400">Puntaje final</div>
+                <div className="text-xs text-teal-200">Puntaje final</div>
                 <div className="text-lg font-bold text-white">
                   {scoreCount} / {questions.length} ({scorePercentage}%)
                 </div>
@@ -171,24 +170,24 @@ export const QuizEngine: React.FC<Props> = ({
 
       {/* High Score Banner (>= 70%) with Auto-Completion Confirmation */}
       {submitted && isHighScore && (
-        <Card className="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-emerald-950/40 border-emerald-500/40 p-6 space-y-4">
+        <Card className="bg-emerald-50 border-emerald-300 p-6 space-y-4 shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 flex-shrink-0">
               <CheckCircle2 className="w-6 h-6" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                ¡Felicidades! Has aprobado el Quiz <Sparkles className="w-4 h-4 text-amber-300" />
+              <h3 className="text-lg font-bold text-emerald-900 flex items-center gap-2">
+                ¡Felicidades! Has aprobado el Quiz <Sparkles className="w-4 h-4 text-amber-500" />
               </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-xs text-emerald-800 leading-relaxed">
                 Obtuviste un puntaje de <strong>{scorePercentage}%</strong>. Has demostrado un dominio sólido de los temas de esta lección.
               </p>
             </div>
           </div>
 
           {showAutoConfirm && (
-            <div className="p-4 bg-slate-950/80 rounded-xl border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 pt-3">
-              <span className="text-xs text-slate-300 font-medium">
+            <div className="p-4 bg-white rounded-xl border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 shadow-xs">
+              <span className="text-xs text-slate-700 font-medium">
                 ¿Deseas marcar esta lección como completada en tu progreso?
               </span>
               <div className="flex items-center gap-2">
@@ -196,7 +195,7 @@ export const QuizEngine: React.FC<Props> = ({
                   variant="outline"
                   size="sm"
                   onClick={() => setShowAutoConfirm(false)}
-                  className="text-xs text-slate-400 border-slate-700"
+                  className="text-xs text-slate-600 border-slate-300"
                 >
                   Más tarde
                 </Button>
@@ -204,7 +203,7 @@ export const QuizEngine: React.FC<Props> = ({
                   variant="primary"
                   size="sm"
                   onClick={handleConfirmCompletion}
-                  className="text-xs font-bold bg-emerald-600 hover:bg-emerald-500 gap-1.5 shadow-lg shadow-emerald-600/30"
+                  className="text-xs font-bold bg-emerald-600 hover:bg-emerald-500 gap-1.5 shadow-sm"
                 >
                   <CheckCircle2 className="w-4 h-4" /> Marcar Lección Completada
                 </Button>
@@ -216,16 +215,16 @@ export const QuizEngine: React.FC<Props> = ({
 
       {/* Low Score Remediation Banner (< 70%) */}
       {submitted && !isHighScore && (
-        <Card className="bg-gradient-to-r from-amber-950/30 via-slate-900 to-amber-950/30 border-amber-500/40 p-6 space-y-4">
+        <Card className="bg-amber-50 border-amber-300 p-6 space-y-4 shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 flex-shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-amber-100 border border-amber-200 flex items-center justify-center text-amber-700 flex-shrink-0">
               <AlertCircle className="w-6 h-6" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-lg font-bold text-white">
+              <h3 className="text-lg font-bold text-amber-900">
                 Puntaje obtenido: {scorePercentage}% — ¡Sigue intentando!
               </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-xs text-amber-800 leading-relaxed">
                 Necesitas 70% o más para aprobar. Te recomendamos repasar los temas de la lección o consultar directamente a tu Tutor IA sobre las preguntas falladas.
               </p>
             </div>
@@ -233,9 +232,9 @@ export const QuizEngine: React.FC<Props> = ({
 
           {/* Ask AI Tutor for Remediation Buttons */}
           {failedQuestions.length > 0 && onAskTutor && (
-            <div className="space-y-2 pt-2 border-t border-amber-500/20">
-              <span className="text-xs font-bold text-amber-300 flex items-center gap-1.5">
-                <Bot className="w-4 h-4 text-purple-400" /> Consultar errores con el Tutor IA:
+            <div className="space-y-2 pt-2 border-t border-amber-200">
+              <span className="text-xs font-bold text-amber-800 flex items-center gap-1.5">
+                <Bot className="w-4 h-4 text-teal-700" /> Consultar errores con Amauta Tutor:
               </span>
 
               <div className="flex flex-wrap gap-2">
@@ -247,14 +246,14 @@ export const QuizEngine: React.FC<Props> = ({
                       type="button"
                       onClick={() =>
                         onAskTutor(
-                          `Hola Yati Tutor, por favor ayúdame a entender por qué fallé en la pregunta: "${fq.pregunta}". ${
+                          `Hola Amauta Tutor, por favor ayúdame a entender por qué fallé en la pregunta: "${fq.pregunta}". ${
                             fq.explicacion ? "La explicación menciona: " + fq.explicacion : ""
                           }`
                         )
                       }
-                      className="px-3 py-2 rounded-xl bg-purple-950/40 border border-purple-500/30 text-purple-200 hover:bg-purple-900/50 hover:text-white text-xs font-semibold transition-all flex items-center gap-2 group"
+                      className="px-3 py-2 rounded-xl bg-white border border-amber-300 text-amber-900 hover:bg-amber-100 text-xs font-semibold transition-all flex items-center gap-2 group shadow-xs"
                     >
-                      <Sparkles className="w-3.5 h-3.5 text-amber-300 group-hover:scale-110 transition-transform" />
+                      <Sparkles className="w-3.5 h-3.5 text-amber-600 group-hover:scale-110 transition-transform" />
                       <span>Ayúdame a entender: &quot;{topicText.slice(0, 45)}...&quot;</span>
                     </button>
                   );
@@ -267,10 +266,10 @@ export const QuizEngine: React.FC<Props> = ({
 
       {/* Step-by-Step Mode UI */}
       {viewMode === "step" && !submitted && (
-        <Card className="bg-slate-900/80 border-slate-800 p-6 space-y-6">
+        <Card className="bg-white border-slate-200 p-6 space-y-6 shadow-sm">
           {/* Step Progress Header */}
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-            <span className="text-xs font-bold text-indigo-400 flex items-center gap-1.5">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+            <span className="text-xs font-bold text-teal-700 flex items-center gap-1.5">
               <BookOpen className="w-4 h-4" /> Pregunta {currentStepIndex + 1} de {questions.length}
             </span>
 
@@ -282,10 +281,10 @@ export const QuizEngine: React.FC<Props> = ({
                   onClick={() => setCurrentStepIndex(idx)}
                   className={`w-3 h-3 rounded-full transition-all ${
                     idx === currentStepIndex
-                      ? "bg-indigo-500 ring-2 ring-indigo-500/40 scale-110"
+                      ? "bg-teal-600 ring-2 ring-teal-600/40 scale-110"
                       : selectedAnswers[idx] !== undefined
-                      ? "bg-emerald-500/60"
-                      : "bg-slate-800"
+                      ? "bg-emerald-500/80"
+                      : "bg-slate-200"
                   }`}
                   title={`Ir a pregunta ${idx + 1}`}
                 />
@@ -301,7 +300,7 @@ export const QuizEngine: React.FC<Props> = ({
 
             return (
               <div className="space-y-5">
-                <h3 className="text-lg font-bold text-white leading-snug">
+                <h3 className="text-lg font-bold text-slate-900 leading-snug">
                   {q.pregunta}
                 </h3>
 
@@ -316,8 +315,8 @@ export const QuizEngine: React.FC<Props> = ({
                         onClick={() => handleSelectOption(qIdx, optIdx)}
                         className={`w-full text-left px-4 py-3.5 rounded-xl border text-xs transition-all duration-200 flex items-center justify-between ${
                           isSelected
-                            ? "bg-indigo-600/20 border-indigo-500 text-indigo-200 font-semibold ring-1 ring-indigo-500"
-                            : "bg-slate-950 border-slate-800 text-slate-300 hover:border-indigo-500/50 hover:bg-slate-900"
+                            ? "bg-teal-50 border-teal-600 text-teal-900 font-semibold ring-1 ring-teal-600 shadow-xs"
+                            : "bg-slate-50 border-slate-200 text-slate-800 hover:border-teal-400 hover:bg-white"
                         }`}
                       >
                         <span className="flex items-center gap-3">
@@ -335,13 +334,13 @@ export const QuizEngine: React.FC<Props> = ({
           })()}
 
           {/* Step Navigation Buttons */}
-          <div className="flex items-center justify-between pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-between pt-4 border-t border-slate-200">
             <Button
               variant="outline"
               size="sm"
               disabled={currentStepIndex === 0}
               onClick={() => setCurrentStepIndex((prev) => Math.max(0, prev - 1))}
-              className="gap-1 text-xs border-slate-800 text-slate-300"
+              className="gap-1 text-xs border-slate-300 text-slate-700"
             >
               <ChevronLeft className="w-4 h-4" /> Anterior
             </Button>
@@ -361,7 +360,7 @@ export const QuizEngine: React.FC<Props> = ({
                 size="md"
                 disabled={!allAnswered}
                 onClick={handleSubmit}
-                className="gap-2 text-xs font-bold shadow-lg shadow-indigo-600/30"
+                className="gap-2 text-xs font-bold shadow-sm"
               >
                 Finalizar y Evaluar <ArrowRight className="w-4 h-4" />
               </Button>
@@ -382,16 +381,16 @@ export const QuizEngine: React.FC<Props> = ({
                 className={`p-6 space-y-4 border ${
                   submitted
                     ? userAnswer === q.respuesta_correcta
-                      ? "bg-emerald-950/10 border-emerald-500/30"
-                      : "bg-red-950/10 border-red-500/30"
-                    : "bg-slate-900/80 border-slate-800"
+                      ? "bg-emerald-50/70 border-emerald-300"
+                      : "bg-red-50/70 border-red-300"
+                    : "bg-white border-slate-200 shadow-sm"
                 }`}
               >
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs font-bold text-slate-300">
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-xs font-bold text-slate-700">
                     {qIdx + 1}
                   </span>
-                  <h3 className="text-base font-bold text-white pt-0.5 leading-snug">
+                  <h3 className="text-base font-bold text-slate-900 pt-0.5 leading-snug">
                     {q.pregunta}
                   </h3>
                 </div>
@@ -403,20 +402,20 @@ export const QuizEngine: React.FC<Props> = ({
                     const isCorrect = optIdx === q.respuesta_correcta;
 
                     let optionStyle =
-                      "bg-slate-950 border-slate-800 text-slate-300 hover:border-indigo-500/50 hover:bg-slate-900";
+                      "bg-slate-50 border-slate-200 text-slate-800 hover:border-teal-400 hover:bg-white";
 
                     if (submitted) {
                       if (isCorrect) {
                         optionStyle =
-                          "bg-emerald-500/10 border-emerald-500 text-emerald-300 font-semibold";
+                          "bg-emerald-100 border-emerald-400 text-emerald-900 font-semibold";
                       } else if (isSelected && !isCorrect) {
-                        optionStyle = "bg-red-500/10 border-red-500 text-red-300";
+                        optionStyle = "bg-red-100 border-red-400 text-red-900";
                       } else {
-                        optionStyle = "bg-slate-950/50 border-slate-800/50 text-slate-500";
+                        optionStyle = "bg-slate-50 border-slate-200 text-slate-400";
                       }
                     } else if (isSelected) {
                       optionStyle =
-                        "bg-indigo-600/20 border-indigo-500 text-indigo-200 font-semibold ring-1 ring-indigo-500";
+                        "bg-teal-50 border-teal-600 text-teal-900 font-semibold ring-1 ring-teal-600";
                     }
 
                     return (
@@ -435,10 +434,10 @@ export const QuizEngine: React.FC<Props> = ({
                         </span>
 
                         {submitted && isCorrect && (
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                         )}
                         {submitted && isSelected && !isCorrect && (
-                          <XCircle className="w-4 h-4 text-red-400" />
+                          <XCircle className="w-4 h-4 text-red-600" />
                         )}
                       </button>
                     );
@@ -448,8 +447,8 @@ export const QuizEngine: React.FC<Props> = ({
                 {/* Explanation of Answer */}
                 {submitted && q.explicacion && (
                   <div className="pl-10 pt-2">
-                    <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 space-y-1">
-                      <strong className="text-indigo-400 flex items-center gap-1">
+                    <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-1">
+                      <strong className="text-teal-700 flex items-center gap-1">
                         <HelpCircle className="w-3.5 h-3.5" /> Explicación:
                       </strong>
                       <p>{q.explicacion}</p>
@@ -468,7 +467,7 @@ export const QuizEngine: React.FC<Props> = ({
                 size="md"
                 disabled={!allAnswered}
                 onClick={handleSubmit}
-                className="gap-2 text-xs font-bold shadow-lg shadow-indigo-600/30"
+                className="gap-2 text-xs font-bold shadow-sm"
               >
                 Enviar Respuestas <ArrowRight className="w-4 h-4" />
               </Button>
@@ -484,7 +483,7 @@ export const QuizEngine: React.FC<Props> = ({
             variant="outline"
             size="sm"
             onClick={handleRetry}
-            className="gap-2 text-xs border-slate-700 text-slate-300"
+            className="gap-2 text-xs border-slate-300 text-slate-700"
           >
             <RotateCcw className="w-4 h-4" /> Reintentar Quiz
           </Button>
@@ -494,7 +493,7 @@ export const QuizEngine: React.FC<Props> = ({
               variant="primary"
               size="sm"
               onClick={handleConfirmCompletion}
-              className="gap-2 text-xs font-bold bg-emerald-600 hover:bg-emerald-500"
+              className="gap-2 text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white"
             >
               <CheckCircle2 className="w-4 h-4" /> Marcar Lección Completada
             </Button>

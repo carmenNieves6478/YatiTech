@@ -370,18 +370,18 @@ export const StudentDashboard: React.FC = () => {
               )}
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
                 ¡Hola, {profileName || user?.email?.split("@")[0] || "Estudiante"}! 👋
               </h1>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                Panel educativo y seguimiento de aprendizaje de YatiTech PWA.
+              <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                Panel educativo y seguimiento de aprendizaje de Amauta PWA.
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 bg-slate-950/80 px-4 py-2 rounded-xl border border-slate-800 text-xs font-bold text-amber-400">
-              <Flame className="w-4 h-4 text-amber-400 animate-bounce" />
+            <div className="flex items-center gap-2 bg-amber-50 px-4 py-2 rounded-xl border border-amber-200 text-xs font-bold text-amber-700 shadow-xs">
+              <Flame className="w-4 h-4 text-amber-500 animate-bounce" />
               <span>{streakDays} {streakDays === 1 ? "Día" : "Días"} en Racha</span>
             </div>
           </div>
@@ -389,13 +389,13 @@ export const StudentDashboard: React.FC = () => {
       </Card>
 
       {/* Mobile & Desktop Navigation Tabs */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-800 scrollbar-none">
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200 scrollbar-none">
         <button
           onClick={() => setActiveTab("progreso")}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
             activeTab === "progreso"
-              ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
-              : "bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800/80"
+              ? "bg-teal-600 text-white shadow-md shadow-teal-600/20"
+              : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
           }`}
         >
           <BarChart3 className="w-4 h-4" /> Mi Progreso
@@ -405,8 +405,8 @@ export const StudentDashboard: React.FC = () => {
           onClick={() => setActiveTab("cursos")}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
             activeTab === "cursos"
-              ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
-              : "bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800/80"
+              ? "bg-teal-600 text-white shadow-md shadow-teal-600/20"
+              : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
           }`}
         >
           <BookOpen className="w-4 h-4" /> Mis Cursos ({activeCourses.length})
@@ -416,8 +416,8 @@ export const StudentDashboard: React.FC = () => {
           onClick={() => setActiveTab("guardado")}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
             activeTab === "guardado"
-              ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
-              : "bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800/80"
+              ? "bg-teal-600 text-white shadow-md shadow-teal-600/20"
+              : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
           }`}
         >
           <Bookmark className="w-4 h-4" /> Guardado ({savedItems.length})
@@ -427,8 +427,8 @@ export const StudentDashboard: React.FC = () => {
           onClick={() => setActiveTab("notas")}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
             activeTab === "notas"
-              ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
-              : "bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800/80"
+              ? "bg-teal-600 text-white shadow-md shadow-teal-600/20"
+              : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
           }`}
         >
           <StickyNote className="w-4 h-4" /> Mis Notas ({userNotes.length})
@@ -438,8 +438,8 @@ export const StudentDashboard: React.FC = () => {
           onClick={() => setActiveTab("perfil")}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
             activeTab === "perfil"
-              ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
-              : "bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800/80"
+              ? "bg-teal-600 text-white shadow-md shadow-teal-600/20"
+              : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
           }`}
         >
           <User className="w-4 h-4" /> Mi Perfil

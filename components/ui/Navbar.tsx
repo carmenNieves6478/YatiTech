@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "./Button";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { usePWA } from "@/hooks/usePWA";
@@ -13,25 +12,27 @@ export const Navbar: React.FC = () => {
   const { isInstallable, installPWA } = usePWA();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const logoUrl = "https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png";
+
   return (
-    <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60">
+    <header className="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
-            <Image
-              src="/icon.png"
-              alt="YatiTech Logo"
-              fill
-              className="object-cover"
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-teal-500/20 group-hover:scale-105 transition-transform duration-200 bg-teal-50 border border-teal-100 flex items-center justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={logoUrl}
+              alt="Amauta Logo"
+              className="w-full h-full object-contain p-0.5"
             />
           </div>
           <div>
-            <span className="text-xl font-extrabold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              YatiTech
+            <span className="text-xl font-extrabold bg-gradient-to-r from-teal-600 via-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+              Amauta
             </span>
-            <span className="hidden sm:inline-block ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-              Sabiduría + STEM
+            <span className="hidden sm:inline-block ml-2 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
+              Sabiduría & STEM
             </span>
           </div>
         </Link>
@@ -40,22 +41,22 @@ export const Navbar: React.FC = () => {
         <nav className="hidden md:flex items-center gap-6">
           <Link
             href="/cursos"
-            className="text-sm font-medium text-slate-300 hover:text-indigo-400 transition-colors flex items-center gap-2"
+            className="text-sm font-medium text-slate-700 hover:text-teal-600 transition-colors flex items-center gap-2"
           >
-            <BookOpen className="w-4 h-4" /> Cursos
+            <BookOpen className="w-4 h-4 text-teal-600" /> Cursos
           </Link>
           <Link
             href="/tutor"
-            className="text-sm font-medium text-slate-300 hover:text-indigo-400 transition-colors flex items-center gap-2"
+            className="text-sm font-medium text-slate-700 hover:text-teal-600 transition-colors flex items-center gap-2"
           >
-            <Bot className="w-4 h-4 text-purple-400" /> Yati Tutor
+            <Bot className="w-4 h-4 text-emerald-600" /> Amauta Tutor
           </Link>
           {user && (
             <Link
               href="/dashboard"
-              className="text-sm font-medium text-slate-300 hover:text-indigo-400 transition-colors flex items-center gap-2"
+              className="text-sm font-medium text-slate-700 hover:text-teal-600 transition-colors flex items-center gap-2"
             >
-              <LayoutDashboard className="w-4 h-4" /> Panel
+              <LayoutDashboard className="w-4 h-4 text-teal-600" /> Panel
             </Link>
           )}
         </nav>
@@ -67,7 +68,7 @@ export const Navbar: React.FC = () => {
               variant="outline"
               size="sm"
               onClick={installPWA}
-              className="gap-2 border-indigo-500/40 text-indigo-300 hover:bg-indigo-500/20"
+              className="gap-2 border-teal-300 text-teal-700 hover:bg-teal-50"
             >
               <Smartphone className="w-4 h-4" /> Instalar App
             </Button>
@@ -75,11 +76,11 @@ export const Navbar: React.FC = () => {
 
           {!loading && user ? (
             <div className="flex items-center gap-3">
-              <Link href="/dashboard" className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl hover:border-slate-700 transition-colors">
-                <div className="w-6 h-6 rounded-full bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 flex items-center justify-center text-xs font-bold">
+              <Link href="/dashboard" className="flex items-center gap-2 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-xl hover:border-teal-300 transition-colors">
+                <div className="w-6 h-6 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs font-bold shadow-sm">
                   {profile?.fullName ? profile.fullName.charAt(0).toUpperCase() : <User className="w-3.5 h-3.5" />}
                 </div>
-                <span className="text-xs font-medium text-slate-200 max-w-[120px] truncate">
+                <span className="text-xs font-medium text-slate-800 max-w-[120px] truncate">
                   {profile?.fullName || user.email?.split("@")[0]}
                 </span>
               </Link>
@@ -88,7 +89,7 @@ export const Navbar: React.FC = () => {
                 size="sm"
                 onClick={signOut}
                 title="Cerrar Sesión"
-                className="text-slate-400 hover:text-red-400 p-2"
+                className="text-slate-500 hover:text-red-600 p-2"
               >
                 <LogOut className="w-4 h-4" />
               </Button>
@@ -112,7 +113,7 @@ export const Navbar: React.FC = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-slate-400 hover:text-white focus:outline-none"
+          className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none"
           aria-label="Menu"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -121,28 +122,28 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-3 pb-6 space-y-3">
+        <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-lg">
           <Link
             href="/cursos"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-200 hover:text-indigo-400 font-medium flex items-center gap-3"
+            className="block py-2 text-slate-800 hover:text-teal-600 font-medium flex items-center gap-3"
           >
-            <BookOpen className="w-5 h-5 text-indigo-400" /> Cursos
+            <BookOpen className="w-5 h-5 text-teal-600" /> Cursos
           </Link>
           <Link
             href="/tutor"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-200 hover:text-indigo-400 font-medium flex items-center gap-3"
+            className="block py-2 text-slate-800 hover:text-teal-600 font-medium flex items-center gap-3"
           >
-            <Bot className="w-5 h-5 text-purple-400" /> Yati Tutor
+            <Bot className="w-5 h-5 text-emerald-600" /> Amauta Tutor
           </Link>
           {user && (
             <Link
               href="/dashboard"
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 text-slate-200 hover:text-indigo-400 font-medium flex items-center gap-3"
+              className="block py-2 text-slate-800 hover:text-teal-600 font-medium flex items-center gap-3"
             >
-              <LayoutDashboard className="w-5 h-5 text-indigo-400" /> Dashboard
+              <LayoutDashboard className="w-5 h-5 text-teal-600" /> Dashboard
             </Link>
           )}
 
@@ -151,17 +152,17 @@ export const Navbar: React.FC = () => {
               variant="outline"
               size="md"
               onClick={installPWA}
-              className="w-full justify-center gap-2 mt-2"
+              className="w-full justify-center gap-2 mt-2 border-teal-300 text-teal-700"
             >
               <Smartphone className="w-4 h-4" /> Instalar como PWA
             </Button>
           )}
 
-          <div className="pt-3 border-t border-slate-800">
+          <div className="pt-3 border-t border-slate-200">
             {user ? (
               <div className="space-y-2">
-                <div className="text-xs text-slate-400 px-1 truncate">
-                  Conectado como <strong className="text-slate-200">{user.email}</strong>
+                <div className="text-xs text-slate-500 px-1 truncate">
+                  Conectado como <strong className="text-slate-800">{user.email}</strong>
                 </div>
                 <Button
                   variant="outline"
@@ -170,7 +171,7 @@ export const Navbar: React.FC = () => {
                     setMobileMenuOpen(false);
                     signOut();
                   }}
-                  className="w-full justify-center gap-2 text-red-400 border-red-900/40 hover:bg-red-950/40"
+                  className="w-full justify-center gap-2 text-red-600 border-red-200 hover:bg-red-50"
                 >
                   <LogOut className="w-4 h-4" /> Cerrar Sesión
                 </Button>

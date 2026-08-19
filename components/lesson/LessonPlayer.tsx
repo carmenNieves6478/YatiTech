@@ -183,7 +183,6 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
     });
 
     try {
-      // Upsert into Supabase user_progress
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { error: upsertErr } = await (supabase.from("user_progress" as any) as any).upsert(
         {
@@ -201,7 +200,6 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
       }
     } catch (err) {
       console.error("Rollback del progreso por error de permisos o red:", err);
-      // Rollback on error
       setCompletedLessonIds((prev) => {
         const next = new Set(prev);
         if (isCurrentlyCompleted) {
@@ -223,7 +221,6 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
 
     try {
       if (nextSaved) {
-        // Insert into user_saved
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         await (supabase.from("user_saved" as any) as any).insert({
           user_id: user.id,
@@ -231,7 +228,6 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
           course_id: courseId,
         });
       } else {
-        // Delete from user_saved
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         await (supabase.from("user_saved" as any) as any)
           .delete()
@@ -246,7 +242,7 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
 
   if (loading) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-24 text-center text-slate-400">
+      <div className="max-w-4xl mx-auto px-4 py-24 text-center text-slate-500">
         Cargando lección interactiva...
       </div>
     );
@@ -255,9 +251,9 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
   if (error || !currentLesson) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16 text-center space-y-4">
-        <Card className="p-8 border-red-900/40 bg-red-950/20">
-          <h3 className="text-xl font-bold text-white mb-2">Lección no encontrada</h3>
-          <p className="text-slate-400 text-xs mb-6">
+        <Card className="p-8 border-red-200 bg-red-50 text-red-900">
+          <h3 className="text-xl font-bold text-red-900 mb-2">Lección no encontrada</h3>
+          <p className="text-slate-600 text-xs mb-6">
             {error || "La lección que buscas no existe o ha sido despublicada."}
           </p>
           <Link href={`/cursos/${courseId}`}>
@@ -270,28 +266,27 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
     );
   }
 
-  // Find index of current lesson for Prev / Next navigation
   const currentIndex = lessonsList.findIndex((l) => l.id === lessonId);
   const prevLesson = currentIndex > 0 ? lessonsList[currentIndex - 1] : null;
   const nextLesson = currentIndex < lessonsList.length - 1 ? lessonsList[currentIndex + 1] : null;
   const isLessonCompleted = completedLessonIds.has(lessonId);
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Top Mobile Bar with Sidebar Toggle */}
-      <div className="lg:hidden bg-slate-900 border-b border-slate-800 px-4 py-3 flex items-center justify-between sticky top-16 z-30">
+      <div className="lg:hidden bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between sticky top-16 z-30 shadow-xs">
         <button
           onClick={() => setMobileSidebarOpen(true)}
-          className="flex items-center gap-2 text-xs font-semibold text-slate-200 hover:text-indigo-400"
+          className="flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-teal-700"
         >
-          <Menu className="w-4 h-4 text-indigo-400" /> Ver Programa ({lessonsList.length})
+          <Menu className="w-4 h-4 text-teal-600" /> Ver Programa ({lessonsList.length})
         </button>
 
         <button
           onClick={() => setTutorChatOpen(true)}
-          className="flex items-center gap-1.5 text-xs font-bold text-purple-300 bg-purple-600/20 px-3 py-1.5 rounded-full border border-purple-500/30"
+          className="flex items-center gap-1.5 text-xs font-bold text-teal-800 bg-teal-50 px-3 py-1.5 rounded-full border border-teal-200"
         >
-          <Bot className="w-4 h-4" /> Tutor IA
+          <Bot className="w-4 h-4 text-teal-600" /> Amauta Tutor
         </button>
       </div>
 
@@ -310,12 +305,12 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
         {/* Main Content Area */}
         <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-4xl space-y-8">
           {/* Top Action Header Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-800">
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-200">
             <div className="space-y-1">
-              <span className="text-[11px] font-semibold text-indigo-400 uppercase tracking-wider">
+              <span className="text-[11px] font-semibold text-teal-700 uppercase tracking-wider">
                 Lección {currentIndex + 1} de {lessonsList.length}
               </span>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
                 {currentLesson.titulo}
               </h1>
             </div>
@@ -331,13 +326,13 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
                     onClick={handleToggleSaved}
                     className={`gap-2 text-xs ${
                       isSaved
-                        ? "text-amber-400 border-amber-500/40 bg-amber-500/10"
-                        : "text-slate-400 border-slate-800 hover:text-white"
+                        ? "text-amber-700 border-amber-300 bg-amber-50"
+                        : "text-slate-600 border-slate-200 hover:text-slate-900"
                     }`}
                   >
                     {isSaved ? (
                       <>
-                        <BookmarkCheck className="w-4 h-4 text-amber-400" /> Guardado
+                        <BookmarkCheck className="w-4 h-4 text-amber-600" /> Guardado
                       </>
                     ) : (
                       <>
@@ -353,13 +348,13 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
                     onClick={handleToggleCompleted}
                     className={`gap-2 text-xs font-bold transition-all duration-300 ${
                       isLessonCompleted
-                        ? "bg-emerald-950/60 text-emerald-300 border border-emerald-500/40"
-                        : "shadow-lg shadow-indigo-600/30"
+                        ? "bg-emerald-50 text-emerald-800 border border-emerald-300"
+                        : "shadow-sm shadow-teal-600/20"
                     }`}
                   >
                     <CheckCircle2
                       className={`w-4 h-4 ${
-                        isLessonCompleted ? "text-emerald-400" : "text-slate-300"
+                        isLessonCompleted ? "text-emerald-600" : "text-white"
                       }`}
                     />
                     {isLessonCompleted ? "Completada ✓" : "Marcar como completada"}
@@ -370,9 +365,9 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
               {/* Toggle AI Tutor Drawer Button (Desktop) */}
               <button
                 onClick={() => setTutorChatOpen(!tutorChatOpen)}
-                className="hidden lg:flex items-center gap-2 text-xs font-bold px-3 py-2 rounded-xl bg-purple-600/20 text-purple-300 border border-purple-500/30 hover:bg-purple-600/30 transition-colors shadow-md"
+                className="hidden lg:flex items-center gap-2 text-xs font-bold px-3 py-2 rounded-xl bg-teal-50 text-teal-800 border border-teal-200 hover:bg-teal-100 transition-colors shadow-xs"
               >
-                <Bot className="w-4 h-4 text-purple-400" /> Tutor IA
+                <Bot className="w-4 h-4 text-teal-600" /> Amauta Tutor
               </button>
             </div>
           </div>
@@ -388,7 +383,7 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
               }}
             />
           ) : (
-            <Card className="bg-slate-900/80 border-slate-800 p-6 sm:p-8">
+            <Card className="bg-white border-slate-200 p-6 sm:p-8 shadow-sm">
               <MarkdownViewer content={currentLesson.contenido_markdown} />
             </Card>
           )}
@@ -399,13 +394,13 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
           )}
 
           {/* Previous / Next Lesson Navigation */}
-          <div className="pt-6 border-t border-slate-800 flex items-center justify-between gap-4">
+          <div className="pt-6 border-t border-slate-200 flex items-center justify-between gap-4">
             {prevLesson ? (
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => router.push(`/cursos/${courseId}/leccion/${prevLesson.id}`)}
-                className="gap-2 text-xs border-slate-800 text-slate-300 hover:text-white"
+                className="gap-2 text-xs border-slate-200 text-slate-700 hover:text-slate-900"
               >
                 <ChevronLeft className="w-4 h-4" /> Lección Anterior
               </Button>
@@ -418,14 +413,14 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
                 variant="primary"
                 size="sm"
                 onClick={() => router.push(`/cursos/${courseId}/leccion/${nextLesson.id}`)}
-                className="gap-2 text-xs font-semibold shadow-md shadow-indigo-600/20"
+                className="gap-2 text-xs font-semibold shadow-sm"
               >
                 Siguiente Lección <ChevronRight className="w-4 h-4" />
               </Button>
             ) : (
               <Link href={`/cursos/${courseId}`}>
-                <Button variant="outline" size="sm" className="gap-2 text-xs border-indigo-500/40 text-indigo-300">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Finalizar Curso
+                <Button variant="outline" size="sm" className="gap-2 text-xs border-teal-300 text-teal-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Finalizar Curso
                 </Button>
               </Link>
             )}
@@ -437,11 +432,11 @@ export const LessonPlayer: React.FC<Props> = ({ courseId, lessonId }) => {
       {!tutorChatOpen && (
         <button
           onClick={() => setTutorChatOpen(true)}
-          className="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-xl hover:scale-110 transition-transform duration-300 flex items-center gap-2 border border-purple-400/40"
-          title="Consultar al Tutor IA Gemini"
+          className="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-xl hover:scale-110 transition-transform duration-300 flex items-center gap-2 border border-teal-400"
+          title="Consultar al Tutor IA Amauta"
         >
-          <Bot className="w-6 h-6 animate-pulse" />
-          <span className="hidden sm:inline text-xs font-bold pr-1">Preguntar al Tutor</span>
+          <Bot className="w-6 h-6 animate-bounce" />
+          <span className="hidden sm:inline text-xs font-bold pr-1">Preguntar a Amauta</span>
         </button>
       )}
 

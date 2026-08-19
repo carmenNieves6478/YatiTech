@@ -56,7 +56,7 @@ export function useTutor() {
       const errorMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: "model",
-        content: "Lo siento, ha ocurrido un error al conectar con Yati Tutor. Revisa la configuración de tu GEMINI_API_KEY.",
+        content: "Lo siento, ha ocurrido un error al conectar con Amauta Tutor. Revisa la configuración de tu GEMINI_API_KEY.",
         timestamp: new Date().toISOString(),
         error: true,
       };

@@ -29,20 +29,20 @@ export const TutorChat: React.FC = () => {
   };
 
   return (
-    <Card className="flex flex-col h-[650px] max-w-4xl mx-auto border-indigo-500/20 bg-slate-900/80 p-0 overflow-hidden shadow-2xl">
+    <Card className="flex flex-col h-[650px] max-w-4xl mx-auto border-slate-200 bg-white p-0 overflow-hidden shadow-lg">
       {/* Chat Header */}
-      <div className="p-4 bg-slate-950/80 border-b border-slate-800 flex items-center justify-between">
+      <div className="p-4 bg-teal-900 text-white border-b border-teal-800 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="relative p-2.5 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-xl text-white shadow-lg shadow-indigo-500/20">
+          <div className="relative p-2.5 bg-teal-700 rounded-xl text-white shadow-md">
             <Bot className="w-6 h-6" />
-            <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-400 border-2 border-slate-950 rounded-full"></span>
+            <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-400 border-2 border-teal-900 rounded-full"></span>
           </div>
           <div>
             <h3 className="font-bold text-white flex items-center gap-2 text-base">
-              Yati Tutor IA <Sparkles className="w-4 h-4 text-amber-400" />
+              Amauta Tutor IA <Sparkles className="w-4 h-4 text-amber-300" />
             </h3>
-            <p className="text-xs text-slate-400">
-              Sabiduría Aymara & Inteligencia Artificial STEM • Método Socrático
+            <p className="text-xs text-teal-200">
+              Sabiduría Quechua & Inteligencia Artificial STEM • Método Socrático
             </p>
           </div>
         </div>
@@ -52,7 +52,7 @@ export const TutorChat: React.FC = () => {
             variant="ghost"
             size="sm"
             onClick={clearMessages}
-            className="text-slate-400 hover:text-red-400 text-xs gap-1.5"
+            className="text-teal-200 hover:text-white hover:bg-teal-800 text-xs gap-1.5"
           >
             <Trash2 className="w-3.5 h-3.5" /> Limpiar chat
           </Button>
@@ -60,16 +60,16 @@ export const TutorChat: React.FC = () => {
       </div>
 
       {/* Messages Scroll Area */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-950/40">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
         {messages.length === 0 ? (
-          <div className="h-full flex flex-col items-center justify-center text-center p-6 text-slate-400">
-            <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4 shadow-inner">
+          <div className="h-full flex flex-col items-center justify-center text-center p-6 text-slate-500">
+            <div className="w-16 h-16 rounded-2xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-600 mb-4 shadow-xs">
               <Bot className="w-8 h-8" />
             </div>
-            <h4 className="text-lg font-bold text-slate-200 mb-1">
-              ¡Hola! Soy Yati, tu Tutor Personal en YatiTech
+            <h4 className="text-lg font-bold text-slate-800 mb-1">
+              ¡Hola! Soy Amauta, tu Tutor Personal
             </h4>
-            <p className="text-xs text-slate-400 max-w-md leading-relaxed mb-6">
+            <p className="text-xs text-slate-600 max-w-md leading-relaxed mb-6">
               Puedo ayudarte a resolver dudas sobre matemática, programación Python, física, química, historia o explicarte cualquier tema paso a paso.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-md">
@@ -82,7 +82,7 @@ export const TutorChat: React.FC = () => {
                 <button
                   key={i}
                   onClick={() => sendMessage(prompt)}
-                  className="text-left text-xs bg-slate-900/80 hover:bg-indigo-950/40 border border-slate-800 hover:border-indigo-500/40 p-3 rounded-xl text-slate-300 hover:text-indigo-300 transition-all duration-200"
+                  className="text-left text-xs bg-white hover:bg-teal-50 border border-slate-200 hover:border-teal-300 p-3 rounded-xl text-slate-700 hover:text-teal-800 transition-all duration-200 shadow-xs"
                 >
                   &quot;{prompt}&quot;
                 </button>
@@ -98,7 +98,7 @@ export const TutorChat: React.FC = () => {
               }`}
             >
               {msg.role === "model" && (
-                <div className="w-8 h-8 rounded-xl bg-purple-600/30 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-xl bg-teal-100 border border-teal-200 flex items-center justify-center text-teal-800 flex-shrink-0 mt-1 shadow-xs">
                   <Bot className="w-4 h-4" />
                 </div>
               )}
@@ -106,10 +106,10 @@ export const TutorChat: React.FC = () => {
               <div
                 className={`max-w-[85%] rounded-2xl p-4 text-xs leading-relaxed ${
                   msg.role === "user"
-                    ? "bg-indigo-600 text-white rounded-tr-none shadow-md shadow-indigo-600/20"
+                    ? "bg-teal-600 text-white rounded-tr-none shadow-md"
                     : msg.error
-                    ? "bg-red-950/60 text-red-200 border border-red-800/60 rounded-tl-none"
-                    : "bg-slate-900 text-slate-200 border border-slate-800 rounded-tl-none shadow-md"
+                    ? "bg-red-50 text-red-700 border border-red-200 rounded-tl-none"
+                    : "bg-white text-slate-800 border border-slate-200 rounded-tl-none shadow-sm"
                 }`}
               >
                 {msg.role === "model" ? (
@@ -120,7 +120,7 @@ export const TutorChat: React.FC = () => {
 
                 <div
                   className={`text-[10px] mt-2 text-right ${
-                    msg.role === "user" ? "text-indigo-200" : "text-slate-500"
+                    msg.role === "user" ? "text-teal-100" : "text-slate-400"
                   }`}
                 >
                   {new Date(msg.timestamp).toLocaleTimeString([], {
@@ -131,7 +131,7 @@ export const TutorChat: React.FC = () => {
               </div>
 
               {msg.role === "user" && (
-                <div className="w-8 h-8 rounded-xl bg-indigo-600/30 border border-indigo-500/30 flex items-center justify-center text-indigo-300 flex-shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 mt-1 shadow-xs">
                   <User className="w-4 h-4" />
                 </div>
               )}
@@ -140,13 +140,13 @@ export const TutorChat: React.FC = () => {
         )}
 
         {loading && (
-          <div className="flex gap-3 justify-start items-center text-slate-400 text-xs">
-            <div className="w-8 h-8 rounded-xl bg-purple-600/30 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0">
+          <div className="flex gap-3 justify-start items-center text-slate-500 text-xs">
+            <div className="w-8 h-8 rounded-xl bg-teal-100 border border-teal-200 flex items-center justify-center text-teal-800 flex-shrink-0">
               <Bot className="w-4 h-4" />
             </div>
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl px-4 py-3 flex items-center gap-2 text-indigo-400">
+            <div className="bg-white border border-slate-200 rounded-2xl px-4 py-3 flex items-center gap-2 text-teal-700 shadow-xs">
               <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-              <span>Yati está preparando tu explicación pedagógica...</span>
+              <span>Amauta está preparando tu explicación pedagógica...</span>
             </div>
           </div>
         )}
@@ -157,15 +157,15 @@ export const TutorChat: React.FC = () => {
       {/* Input Form */}
       <form
         onSubmit={handleSubmit}
-        className="p-3 bg-slate-950 border-t border-slate-800 flex items-center gap-2"
+        className="p-3 bg-white border-t border-slate-200 flex items-center gap-2"
       >
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Pregunta a Yati sobre tus materias o temas STEM..."
+          placeholder="Pregunta a Amauta sobre tus materias o temas STEM..."
           disabled={loading}
-          className="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 disabled:opacity-50"
+          className="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600 disabled:opacity-50"
         />
         <Button
           type="submit"

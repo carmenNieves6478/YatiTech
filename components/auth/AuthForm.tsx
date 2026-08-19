@@ -141,12 +141,12 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode = "login" }) => {
   };
 
   return (
-    <Card className="max-w-md w-full mx-auto border-slate-800 bg-slate-900/90 shadow-2xl p-8 backdrop-blur-xl">
+    <Card className="max-w-md w-full mx-auto border-slate-200 bg-white/95 shadow-xl p-8 backdrop-blur-xl">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-extrabold text-white mb-1">
-          {isLogin ? "Iniciar Sesión en YatiTech" : "Crear Nueva Cuenta"}
+        <h2 className="text-2xl font-extrabold text-slate-900 mb-1">
+          {isLogin ? "Iniciar Sesión en Amauta" : "Crear Nueva Cuenta"}
         </h2>
-        <p className="text-xs text-slate-400">
+        <p className="text-xs text-slate-500">
           {isLogin
             ? "Ingresa tu correo y contraseña para acceder a la plataforma"
             : "Completa el formulario para registrarte con tu correo"}
@@ -157,14 +157,14 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode = "login" }) => {
         <div
           className={`p-3.5 rounded-xl text-xs mb-5 flex items-start gap-2.5 transition-all animate-in fade-in duration-200 ${
             message.type === "error"
-              ? "bg-red-950/60 border border-red-800/80 text-red-200"
-              : "bg-emerald-950/60 border border-emerald-800/80 text-emerald-200"
+              ? "bg-red-50 border border-red-200 text-red-700"
+              : "bg-emerald-50 border border-emerald-200 text-emerald-800"
           }`}
         >
           {message.type === "error" ? (
-            <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
+            <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
           ) : (
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
           )}
           <span className="leading-relaxed">{message.text}</span>
         </div>
@@ -173,46 +173,46 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode = "login" }) => {
       <form onSubmit={handleAuth} className="space-y-4">
         {!isLogin && (
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
               Nombre Completo
             </label>
             <div className="relative">
-              <User className="w-4 h-4 text-slate-500 absolute left-3.5 top-3" />
+              <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
               <input
                 type="text"
                 required
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="Ej. María García"
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
               />
             </div>
           </div>
         )}
 
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
             Correo Electrónico
           </label>
           <div className="relative">
-            <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-3" />
+            <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="estudiante@ejemplo.com"
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
             Contraseña
           </label>
           <div className="relative">
-            <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-3" />
+            <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
             <input
               type="password"
               required
@@ -220,7 +220,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode = "login" }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
             />
           </div>
         </div>
@@ -229,7 +229,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode = "login" }) => {
           type="submit"
           disabled={loading}
           variant="primary"
-          className="w-full gap-2 py-3 rounded-xl mt-2 font-semibold shadow-lg shadow-indigo-600/30"
+          className="w-full gap-2 py-3 rounded-xl mt-2 font-semibold shadow-md shadow-teal-600/20"
         >
           {loading ? (
             <Loader2 className="w-4 h-4 animate-spin text-white" />
@@ -245,14 +245,14 @@ export const AuthForm: React.FC<AuthFormProps> = ({ mode = "login" }) => {
         </Button>
       </form>
 
-      <div className="mt-6 pt-5 border-t border-slate-800 text-center">
+      <div className="mt-6 pt-5 border-t border-slate-200 text-center">
         <button
           type="button"
           onClick={() => {
             setIsLogin(!isLogin);
             setMessage(null);
           }}
-          className="text-xs text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
+          className="text-xs text-teal-700 hover:text-teal-800 font-medium transition-colors"
         >
           {isLogin
             ? "¿No tienes cuenta aún? Regístrate aquí"

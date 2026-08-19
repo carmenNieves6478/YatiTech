@@ -1,20 +1,20 @@
 {
-  "name": "YatiTech - Sabiduría & Plataforma Educativa STEM",
-  "short_name": "YatiTech",
-  "description": "Plataforma educativa interactiva inspirada en el saber Aymara (Yati) con tutoría personalizada de IA Yati.",
+  "name": "Amauta - Plataforma Educativa STEM & Sabiduría",
+  "short_name": "Amauta",
+  "description": "Plataforma educativa interactiva inspirada en los sabios maestros Incas (Amauta) con tutoría personalizada de IA.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#6366f1",
+  "background_color": "#f8fafc",
+  "theme_color": "#0d9488",
   "icons": [
     {
-      "src": "/icons/icon-192x192.png",
+      "src": "https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icons/icon-512x512.png",
+      "src": "https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"

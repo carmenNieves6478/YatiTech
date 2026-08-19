@@ -7,26 +7,26 @@ import { PWAInstallPrompt } from "@/components/pwa/PWAInstallPrompt";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 
 export const metadata: Metadata = {
-  title: "YatiTech - Sabiduría & Plataforma Educativa STEM",
-  description: "Plataforma educativa inspirada en el saber Aymara (Yati) con tutor virtual inteligente y soporte PWA.",
-  applicationName: "YatiTech",
+  title: "Amauta - Plataforma Educativa STEM & Sabiduría",
+  description: "Plataforma educativa inspirada en los maestros sabios (Amauta) con tutoría IA interactiva y tecnología PWA.",
+  applicationName: "Amauta",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
-    title: "YatiTech",
+    statusBarStyle: "default",
+    title: "Amauta",
   },
   formatDetection: {
     telephone: false,
   },
   icons: {
-    icon: "/icons/icon-192x192.png",
-    apple: "/icons/apple-touch-icon.png",
+    icon: "https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png",
+    apple: "https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#020617",
+  themeColor: "#0d9488",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -39,13 +39,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="dark">
+    <html lang="es" className="light">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" href="https://cdn.phototourl.com/free/2026-08-19-5ab242fd-1f4e-4e5e-b46e-3fe2e05350cc.png" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body className="min-h-screen flex flex-col bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased selection:bg-teal-500 selection:text-white">
         <AuthProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

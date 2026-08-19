@@ -14,17 +14,17 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
+    "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-lg shadow-indigo-500/25 active:scale-[0.98]",
+      "bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white shadow-md shadow-teal-600/20 active:scale-[0.98]",
     secondary:
-      "bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 active:scale-[0.98]",
+      "bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 active:scale-[0.98]",
     outline:
-      "border-2 border-indigo-500/30 hover:border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 active:scale-[0.98]",
+      "border-2 border-teal-600/40 hover:border-teal-600 text-teal-700 hover:bg-teal-50 active:scale-[0.98]",
     ghost:
-      "text-slate-400 hover:text-white hover:bg-slate-800/60 active:scale-[0.98]",
+      "text-slate-600 hover:text-teal-700 hover:bg-slate-100 active:scale-[0.98]",
   };
 
   const sizes = {
