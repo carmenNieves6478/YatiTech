@@ -5,6 +5,7 @@ import { useTutor } from "@/hooks/useTutor";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Bot, Send, Sparkles, Trash2, User, RefreshCw } from "lucide-react";
+import { MarkdownViewer } from "@/components/lesson/MarkdownViewer";
 
 export const TutorChat: React.FC = () => {
   const { messages, loading, sendMessage, clearMessages } = useTutor();
@@ -32,16 +33,16 @@ export const TutorChat: React.FC = () => {
       {/* Chat Header */}
       <div className="p-4 bg-slate-950/80 border-b border-slate-800 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="relative p-2 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-xl text-white shadow-lg shadow-indigo-500/20">
+          <div className="relative p-2.5 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-xl text-white shadow-lg shadow-indigo-500/20">
             <Bot className="w-6 h-6" />
             <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-400 border-2 border-slate-950 rounded-full"></span>
           </div>
           <div>
             <h3 className="font-bold text-white flex items-center gap-2 text-base">
-              Ayme Tutor IA <Sparkles className="w-4 h-4 text-amber-400" />
+              Yati Tutor IA <Sparkles className="w-4 h-4 text-amber-400" />
             </h3>
             <p className="text-xs text-slate-400">
-              Impulsado por Google Gemini 1.5 Flash • Método Socrático
+              Sabiduría Aymara & Inteligencia Artificial STEM • Método Socrático
             </p>
           </div>
         </div>
@@ -66,17 +67,17 @@ export const TutorChat: React.FC = () => {
               <Bot className="w-8 h-8" />
             </div>
             <h4 className="text-lg font-bold text-slate-200 mb-1">
-              ¡Hola! Soy Ayme, tu Tutor Personal de IA
+              ¡Hola! Soy Yati, tu Tutor Personal en YatiTech
             </h4>
             <p className="text-xs text-slate-400 max-w-md leading-relaxed mb-6">
-              Puedo ayudarte a resolver dudas sobre matemática, programación, ciencias, o explicarte cualquier tema paso a paso.
+              Puedo ayudarte a resolver dudas sobre matemática, programación Python, física, química, historia o explicarte cualquier tema paso a paso.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-md">
               {[
-                "¿Cómo funciona la recursividad en JS?",
-                "Explícame la fotosíntesis con una analogía",
-                "¿Qué es la ley de Ohm y un ejemplo?",
-                "Ayúdame a organizar un plan de estudio",
+                "¿Cómo funciona un bucle for en Python?",
+                "Explícame las Leyes de Newton con ejemplos",
+                "¿Qué es la masa atómica y cómo se calcula?",
+                "Ayúdame a organizar un plan de estudio STEM",
               ].map((prompt, i) => (
                 <button
                   key={i}
@@ -97,21 +98,26 @@ export const TutorChat: React.FC = () => {
               }`}
             >
               {msg.role === "model" && (
-                <div className="w-8 h-8 rounded-lg bg-indigo-600/30 border border-indigo-500/30 flex items-center justify-center text-indigo-300 flex-shrink-0 mt-0.5">
+                <div className="w-8 h-8 rounded-xl bg-purple-600/30 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0 mt-1">
                   <Bot className="w-4 h-4" />
                 </div>
               )}
 
               <div
-                className={`max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed ${
+                className={`max-w-[85%] rounded-2xl p-4 text-xs leading-relaxed ${
                   msg.role === "user"
-                    ? "bg-indigo-600 text-white rounded-br-none shadow-md shadow-indigo-600/20"
+                    ? "bg-indigo-600 text-white rounded-tr-none shadow-md shadow-indigo-600/20"
                     : msg.error
-                    ? "bg-red-950/60 text-red-200 border border-red-800/60 rounded-bl-none"
-                    : "bg-slate-900 text-slate-200 border border-slate-800 rounded-bl-none shadow-md"
+                    ? "bg-red-950/60 text-red-200 border border-red-800/60 rounded-tl-none"
+                    : "bg-slate-900 text-slate-200 border border-slate-800 rounded-tl-none shadow-md"
                 }`}
               >
-                <div className="whitespace-pre-wrap">{msg.content}</div>
+                {msg.role === "model" ? (
+                  <MarkdownViewer content={msg.content} />
+                ) : (
+                  <div className="whitespace-pre-wrap">{msg.content}</div>
+                )}
+
                 <div
                   className={`text-[10px] mt-2 text-right ${
                     msg.role === "user" ? "text-indigo-200" : "text-slate-500"
@@ -125,7 +131,7 @@ export const TutorChat: React.FC = () => {
               </div>
 
               {msg.role === "user" && (
-                <div className="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 flex-shrink-0 mt-0.5">
+                <div className="w-8 h-8 rounded-xl bg-indigo-600/30 border border-indigo-500/30 flex items-center justify-center text-indigo-300 flex-shrink-0 mt-1">
                   <User className="w-4 h-4" />
                 </div>
               )}
@@ -135,12 +141,12 @@ export const TutorChat: React.FC = () => {
 
         {loading && (
           <div className="flex gap-3 justify-start items-center text-slate-400 text-xs">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600/30 border border-indigo-500/30 flex items-center justify-center text-indigo-300 flex-shrink-0">
+            <div className="w-8 h-8 rounded-xl bg-purple-600/30 border border-purple-500/30 flex items-center justify-center text-purple-300 flex-shrink-0">
               <Bot className="w-4 h-4" />
             </div>
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl px-4 py-3 flex items-center gap-2 text-slate-400">
-              <RefreshCw className="w-3.5 h-3.5 animate-spin text-indigo-400" />
-              <span>Ayme está razonando tu respuesta...</span>
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl px-4 py-3 flex items-center gap-2 text-indigo-400">
+              <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+              <span>Yati está preparando tu explicación pedagógica...</span>
             </div>
           </div>
         )}
@@ -157,16 +163,16 @@ export const TutorChat: React.FC = () => {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Escribe tu pregunta o tema de estudio..."
+          placeholder="Pregunta a Yati sobre tus materias o temas STEM..."
           disabled={loading}
-          className="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 disabled:opacity-50"
+          className="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 disabled:opacity-50"
         />
         <Button
           type="submit"
           disabled={loading || !input.trim()}
           variant="primary"
           size="md"
-          className="gap-2 px-5 py-2.5 rounded-xl"
+          className="gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold"
         >
           <Send className="w-4 h-4" />
           <span className="hidden sm:inline">Enviar</span>

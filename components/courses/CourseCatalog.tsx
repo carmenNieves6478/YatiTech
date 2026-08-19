@@ -234,21 +234,26 @@ export const CourseCatalog: React.FC = () => {
           {filteredCourses.map((course) => (
             <Card
               key={course.id}
-              className="flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group overflow-hidden"
+              className="flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 group p-4 sm:p-5 overflow-hidden"
             >
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {/* Course Cover Image if available */}
                 {course.portada_url ? (
-                  <div className="relative h-44 w-full -mx-6 -mt-6 mb-4 overflow-hidden bg-slate-950">
+                  <div className="relative w-full h-44 sm:h-48 rounded-xl overflow-hidden bg-slate-950 border border-slate-800/80 shadow-md">
                     <Image
                       src={course.portada_url}
                       alt={course.titulo}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-3 right-3">
+                    <div className="absolute top-2.5 right-2.5">
                       <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full border backdrop-blur-md ${getLevelBadgeColor(course.nivel)}`}>
                         {course.nivel.toUpperCase()}
+                      </span>
+                    </div>
+                    <div className="absolute top-2.5 left-2.5">
+                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-950/80 text-indigo-300 border border-slate-800 backdrop-blur-md">
+                        {course.categoria}
                       </span>
                     </div>
                   </div>
