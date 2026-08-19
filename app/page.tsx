@@ -1,101 +1,189 @@
+import Link from "next/link";
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import {
+  Bot,
+  BookOpen,
+  Sparkles,
+  Zap,
+  ShieldCheck,
+  Smartphone,
+  ArrowRight,
+  BrainCircuit,
+  Database,
+} from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="space-y-24 pb-20">
+      {/* Hero Section */}
+      <section className="relative pt-12 lg:pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+        {/* Background Glow Accents */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-indigo-600/30 via-purple-600/20 to-pink-500/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="text-center space-y-6 max-w-3xl mx-auto">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-semibold backdrop-blur-md shadow-inner">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span>Plataforma Educativa PWA + IA Tutor de Gemini</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            El futuro del aprendizaje guiado por{" "}
+            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Inteligencia Artificial
+            </span>
+          </h1>
+
+          <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
+            Plataforma web y móvil instalable (PWA) con autenticación en tiempo real mediante Supabase y tutoría socrática impulsada por Google Gemini.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <Link href="/tutor" className="w-full sm:w-auto">
+              <Button variant="primary" size="lg" className="w-full gap-2 shadow-xl shadow-indigo-600/30">
+                <Bot className="w-5 h-5 text-purple-200" /> Probar Tutor IA <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+            <Link href="/courses" className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full gap-2 border-slate-700 hover:border-slate-500">
+                <BookOpen className="w-5 h-5" /> Ver Cursos
+              </Button>
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Hero Visual Card / App Mockup */}
+        <div className="mt-12 max-w-5xl mx-auto relative rounded-3xl p-2 bg-gradient-to-b from-indigo-500/30 via-slate-800/40 to-slate-900/80 border border-slate-800 shadow-2xl">
+          <div className="bg-slate-950 rounded-2xl overflow-hidden p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-4">
+              <div className="flex items-center gap-2 text-xs font-semibold text-indigo-400">
+                <BrainCircuit className="w-4 h-4" /> Demostración Tutor Virtual
+              </div>
+              <h3 className="text-2xl font-bold text-white">
+                Respuestas explicativas paso a paso, adaptadas a tu nivel
+              </h3>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                El tutor Ayme razona contigo usando el método socrático para que comprendas el porqué de los conceptos, no solo memorices datos.
+              </p>
+              <div className="pt-2 flex flex-wrap gap-2 text-xs">
+                <span className="px-3 py-1 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">
+                  ⚡ Google Gemini 1.5 Flash
+                </span>
+                <span className="px-3 py-1 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">
+                  📱 Soporte PWA Offline
+                </span>
+                <span className="px-3 py-1 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">
+                  🔒 Supabase Auth & DB
+                </span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 relative h-64 w-full rounded-2xl overflow-hidden border border-indigo-500/30 shadow-xl group">
+              <Image
+                src="/icon.png"
+                alt="Ayme App Preview"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-4">
+                <span className="text-xs font-bold text-white bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-800">
+                  Ayme Mobile PWA Card
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Feature Grid */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 space-y-2">
+          <h2 className="text-3xl font-extrabold text-white">
+            Arquitectura de la Plataforma
+          </h2>
+          <p className="text-slate-400 text-sm max-w-xl mx-auto">
+            Construida con las tecnologías más eficientes del desarrollo moderno full-stack.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card className="hover:border-indigo-500/50 transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4">
+              <Zap className="w-6 h-6" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">Next.js 14 App Router</h3>
+            <p className="text-slate-400 text-xs leading-relaxed">
+              Renderizado ultrarrápido en servidor (SSR), optimización automática de imágenes y rutas API ligeras con TypeScript.
+            </p>
+          </Card>
+
+          <Card className="hover:border-purple-500/50 transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
+              <Database className="w-6 h-6" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">Backend con Supabase</h3>
+            <p className="text-slate-400 text-xs leading-relaxed">
+              Base de datos PostgreSQL relacional, autenticación de usuarios segura con SSR cookies y políticas RLS avanzadas.
+            </p>
+          </Card>
+
+          <Card className="hover:border-pink-500/50 transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 mb-4">
+              <Smartphone className="w-6 h-6" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">Soporte Mobile PWA</h3>
+            <p className="text-slate-400 text-xs leading-relaxed">
+              Instalable directamente en dispositivos iOS y Android con Service Worker para caché, manifests y modo offline.
+            </p>
+          </Card>
+        </div>
+      </section>
+
+      {/* Gemini AI Highlight Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-gradient-to-r from-indigo-950 via-slate-900 to-purple-950 border border-indigo-500/30 p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+          <div className="space-y-4 max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-medium border border-purple-500/30">
+              <Bot className="w-3.5 h-3.5" /> Generative AI Integration
+            </div>
+            <h2 className="text-3xl font-extrabold text-white">
+              Prueba la experiencia con Gemini API
+            </h2>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Inicia una conversación con el tutor Ayme para responder tus preguntas académicas, revisar código o preparar exámenes.
+            </p>
+            <div className="pt-2">
+              <Link href="/tutor">
+                <Button variant="primary" size="md" className="gap-2">
+                  Abrir Chat de Tutor <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          <div className="w-full md:w-80 p-6 rounded-2xl bg-slate-950/80 border border-slate-800 shadow-xl space-y-3">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-300 border-b border-slate-800 pb-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" /> Estado del Servidor
+            </div>
+            <div className="space-y-2 text-xs">
+              <div className="flex justify-between text-slate-400">
+                <span>Cliente Supabase:</span>
+                <span className="text-emerald-400 font-semibold">Listo</span>
+              </div>
+              <div className="flex justify-between text-slate-400">
+                <span>SDK Gemini Generative AI:</span>
+                <span className="text-emerald-400 font-semibold">Configurado</span>
+              </div>
+              <div className="flex justify-between text-slate-400">
+                <span>Service Worker PWA:</span>
+                <span className="text-emerald-400 font-semibold">Activo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -6,6 +6,7 @@ export interface UserProfile {
   email?: string;
   fullName?: string;
   avatarUrl?: string;
+  preferredLevel?: string;
   role: "student" | "teacher" | "admin";
 }
 

@@ -48,9 +48,10 @@ export function useTutor() {
       };
 
       setMessages((prev) => [...prev, aiMsg]);
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const errText = err instanceof Error ? err.message : "Error al comunicarse con el tutor";
       console.error("Tutor API error:", err);
-      setError(err.message || "Error al comunicarse con el tutor");
+      setError(errText);
       
       const errorMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),

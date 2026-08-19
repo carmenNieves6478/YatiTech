@@ -16,7 +16,7 @@ export function usePWA() {
   useEffect(() => {
     // Check if running as standalone PWA
     const isStandalone = window.matchMedia("(display-mode: standalone)").matches || 
-      (window.navigator as any).standalone === true;
+      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
     setIsPWA(isStandalone);
 
     // Track online/offline status
